@@ -2,6 +2,7 @@ package com.example.dictionaryapp.feature_dictionary.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.dictionaryapp.feature_dictionary.data.local.Converters
 import com.example.dictionaryapp.feature_dictionary.data.local.WordInfoDao
 import com.example.dictionaryapp.feature_dictionary.data.local.WordInfoDatabase
 import com.example.dictionaryapp.feature_dictionary.data.remote.DictionaryApi
@@ -41,7 +42,7 @@ object WordInfoModule {
             app,
             WordInfoDatabase::class.java,
             "word_db")
-            .addTypeConverter(GsonParser(Gson()))
+            .addTypeConverter(Converters(GsonParser(Gson())))
             .build()
     }
 

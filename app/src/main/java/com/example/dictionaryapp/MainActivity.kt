@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -23,6 +25,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.dictionaryapp.feature_dictionary.domain.model.WordInfo
+import com.example.dictionaryapp.feature_dictionary.presentation.WordInfoItem
 import com.example.dictionaryapp.feature_dictionary.presentation.WordInfoViewModel
 import com.example.dictionaryapp.ui.theme.DictionaryAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,13 +65,19 @@ fun MyApp() {
                 TextField(
                     value = viewModel.searchQuery.value,
                     onValueChange = viewModel::onSearch,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxWidth(),
                     placeholder = { Text(text = "Search") }
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(state.wordInfoItems.size) { index ->
+                        val wordInfo = state.wordInfoItems[index]
                         if (index > 0) {
+                            Spacer(modifier = Modifier.height(8.dp))
+                        }
+                        WordInfoItem(wordInfo = wordInfo)
+                        if(index < state.wordInfoItems.size - 1){
+                            Divider()
                         }
                     }
                 }
