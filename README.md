@@ -23,3 +23,6 @@ This application is based on Clean Architecture principles involving the followi
 - **Data Layer**: Manages application data and responsible for deciding whether to fetch data from a network or use local cached data.
 - **Domain Layer**: Contains business logic and use cases.
 - **Presentation Layer**: Shows data on the screen and communicates with other layers.
+
+## Screenshots
+![Dictionary App](screenshot/img.png)
