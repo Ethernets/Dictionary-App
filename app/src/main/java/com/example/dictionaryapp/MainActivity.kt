@@ -1,6 +1,7 @@
 package com.example.dictionaryapp
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,8 +21,10 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -81,6 +84,9 @@ fun MyApp() {
                         }
                     }
                 }
+            }
+            if(state.isLoading){
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center), )
             }
         }
     }
